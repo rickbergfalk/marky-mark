@@ -1,0 +1,19 @@
+{
+  "name": "marky-mark",
+  "version": "0.1.2",
+  "author": "Rick Bergfalk <rick.bergfalk@gmail.com> (http://rickbergfalk.com/)",
+  "description": "Reads a directory of markdown files with meta-data/front-matter and parses it out. Add your favorite templating language and markdown parser to make your own static site generator",
+  "keywords": [
+	"markdown", 
+	"static", 
+	"site", 
+	"generator", 
+	"tool",
+	"utility",
+	"jifasnif"
+  ],
+  "dependencies": {
+    "js-yaml": "2.0.x"
+  },
+  "main": "marky-mark"
+}
