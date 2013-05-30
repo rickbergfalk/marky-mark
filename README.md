@@ -1,14 +1,10 @@
 # Marky-mark
 
-Marky-mark helps you consume all your markdown files used for static-site generation.
+Marky-mark helps you consume all your markdown files used for static-site generation. 
 
-
-## Overview
-
-A Node.js module that helps you write your own static site generator. 
-Marky-mark reads a directory of markdown files with yaml meta-data/front-matter and parses it out. 
+It reads a directory of files with yaml meta-data/front-matter and parses it out. 
+And if the extension is a markdown one it'll generate the html of that markdown. 
 Add your favorite templating language and markdown parser to make your own static site generator. 
-
 
 ## Usage
 
@@ -22,6 +18,8 @@ tags:
 	- 90s
 whatever: you want
 ---
+
+## A Blog Post
  
 A blog post about how I can't believe Mark Wahlberg is Marky Mark. 
 Written in markdown of course.
@@ -46,7 +44,8 @@ The parsed result is in the meta property, but the original yaml content is stor
   {
     filename: "My Marky Mark post.md",
     yaml: "title: Marky Mark. A retrospective.\ntags: ...",
-    markdown: "\nA blog post about how I ...",
+    markdown: "\n## A Blog Post\n\nA blog post about how I ...",
+	content: "<h2>A Blog Post</h2><p>A blog post about how I ...",
     meta: {
 	  title: "Marky Mark. A retrospective.",
 	  tags: ["music", "90s"],
@@ -64,12 +63,10 @@ And that's it. It's up to you to do something with all the data marky-mark just 
 
 ## Recommended Pairings
 
-Because marky-mark doesn't do anything but read markdown files meant for static-site generators, you'll want to pair it up with other sweet modules to create your own site generator. 
-(I propose that any static site generator built with marky-mark be classified as a funky bunch site generator, or a site generator that uses the funky-bunch approach.)
+Because marky-mark doesn't do anything but read and parse files meant for static-site generators, you'll want to pair it up with other sweet modules to create your own site generator (the funky-bunch approach).
 
 Here are some suggested modules that are fun to use with marky-mark:
 
-- a markdown processor (such as marked)
 - a templating library (EJS, Jade, eco, handlebars, mustache, etc.)
 - a date formatting library (such as moment)
 - a map/reduce or javascript object querying library (I've found taffydb to be super helpful)
