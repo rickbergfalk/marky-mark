@@ -4,24 +4,25 @@
   "author": "Rick Bergfalk <rick.bergfalk@gmail.com> (http://rickbergfalk.com/)",
   "description": "Reads a directory of markdown files with meta-data/front-matter and parses it out. Add your favorite templating language and markdown parser to make your own static site generator",
   "keywords": [
-	"markdown", 
-	"static", 
-	"site", 
-	"generator", 
-	"tool",
-	"utility",
-	"jifasnif"
+    "markdown",
+    "static",
+    "site",
+    "generator",
+    "tool",
+    "utility",
+    "jifasnif"
   ],
   "scripts": {
-    "test": "node ./test/test.js"
+    "test": "node ./test/test.js && node ./test/test-async.js"
   },
   "dependencies": {
+    "file-manifest": "^1.0.0",
     "js-yaml": "2.0.x",
-	"marked": "0.2.x"
+    "marked": "0.2.x"
   },
-  "repository" : {
-		"type": "git", 
-		"url": "git://github.com/rickbergfalk/marky-mark"
-	},
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rickbergfalk/marky-mark"
+  },
   "main": "marky-mark"
 }
