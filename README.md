@@ -10,7 +10,7 @@ Add your favorite templating language and markdown parser to make your own stati
 
 Let's assume you have a folder of markdown files that optionally have front-matter/meta-data, looking something like this:
 
-```
+```markdown
 --- 
 title: Marky Mark. A retrospective.
 tags:
