@@ -13,7 +13,7 @@
     "jifasnif"
   ],
   "scripts": {
-    "test": "node ./test/test.js && node ./test/test-async.js"
+    "test": "./node_modules/.bin/mocha test"
   },
   "dependencies": {
     "file-manifest": "^1.0.0",
@@ -24,5 +24,8 @@
     "type": "git",
     "url": "git://github.com/rickbergfalk/marky-mark"
   },
-  "main": "marky-mark"
+  "main": "marky-mark",
+  "devDependencies": {
+    "mocha": "^1.21.4"
+  }
 }
