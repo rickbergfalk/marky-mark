@@ -4,7 +4,7 @@ Marky-mark helps you consume all your markdown files used for static-site genera
 
 It reads a directory of files with yaml meta-data/front-matter and parses it out. 
 And if the extension is a markdown one it'll generate the html of that markdown. 
-Add your favorite templating language and markdown parser to make your own static site generator. 
+Add your favorite templating language to make your own static site generator. 
 
 ## Usage
 
