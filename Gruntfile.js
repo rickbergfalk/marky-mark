@@ -5,14 +5,13 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     jshint: {
-      all: ['tasks/*.js'],
+      all: ['marky-mark.js', 'lib/**/*.js'],
       options: {
         reporter: require('jshint-stylish'),
         eqeqeq: true,
         es3: true,
         indent: 2,
-        newcap: true,
-        quotmark: 'single'
+        newcap: true
       },
     },
     mochacov: {
