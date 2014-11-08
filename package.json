@@ -16,6 +16,7 @@
     "test": "./node_modules/.bin/mocha test"
   },
   "dependencies": {
+    "config-extend": "0.0.7",
     "file-manifest": "^1.0.0",
     "js-yaml": "2.0.x",
     "marked": "0.2.x"

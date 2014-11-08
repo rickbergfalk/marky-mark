@@ -1,7 +1,7 @@
 var mm = require('../marky-mark.js');
 var assert = require('assert');
 
-describe('.parseDirectorySync', function() {
+describe('.parseDirectory', function() {
   it('should return a list of objects', function(done) {
     mm.parseDirectory(__dirname + "/posts", function(err, posts) {
       assert.deepEqual(posts, [
