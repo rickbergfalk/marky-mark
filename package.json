@@ -13,7 +13,7 @@
     "jifasnif"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/grunt test"
+    "test": "./node_modules/.bin/grunt"
   },
   "dependencies": {
     "config-extend": "0.0.7",
