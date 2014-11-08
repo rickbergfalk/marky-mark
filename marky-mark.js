@@ -49,9 +49,10 @@ exports.parseMatchesSync = function(directory, patterns, options) {
  */
 exports.parseFileSync = function(file, options) {
   file = getAbsolute(file);
+  var filename = path.basename(file, '.md');
   // Pass encoding as string, which is compatible with node v0.8.x
   var contents = fs.readFileSync(file, 'utf8');
-  return exports.parse(contents, file, options);
+  return exports.parse(contents, filename, options);
 };
 
 /**
@@ -67,7 +68,7 @@ exports.parseFileSync = function(file, options) {
  *   context: an object of additional context properties (extends the front-matter, if any).
  */
 exports.parse = function(md, filename, options) {
-  if (typeof filenmae === 'object') {
+  if (typeof filename === 'object') {
     options = filename;
     filename = null;
   }
@@ -89,9 +90,7 @@ exports.parse = function(md, filename, options) {
     html = options.postCompile(html) || html;
   }
 
-  // Extend front matter with any additional context object
   var matter = frontMatter ? yaml.load(frontMatter) : {};
-  extend(matter, options.context || {});
 
   // Construct and return a context object
   var context = { 
@@ -106,6 +105,7 @@ exports.parse = function(md, filename, options) {
     context.filename = filename;
   }
 
+  extend(context, options.context || {});
   return context;
 };
 
@@ -159,11 +159,12 @@ exports.parseFile = function(file, options, cb) {
     options = {};
   }
   file = getAbsolute(file);
+  var filename = path.basename(file, '.md');
   fs.readFile(file, 'utf8', function(err, contents) {
     if (err) {
       cb(err);
     } else {
-      cb(null, exports.parse(contents));
+      cb(null, exports.parse(contents, filename, options));
     }
   });
 };
