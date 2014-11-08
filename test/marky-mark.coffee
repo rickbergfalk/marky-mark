@@ -1,5 +1,4 @@
 expect = require('indeed').expect
-sinon = require('sinon')
 fs = require('fs')
 
 describe 'marky-mark', ->

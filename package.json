@@ -37,7 +37,6 @@
     "jshint-stylish": "^1.0.0",
     "mocha": "^2.0.1",
     "mocha-given": "^0.1.3",
-    "mocha-lcov-reporter": "0.0.1",
-    "sinon": "^1.11.1"
+    "mocha-lcov-reporter": "0.0.1"
   }
 }
