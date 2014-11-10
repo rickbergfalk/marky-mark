@@ -84,7 +84,7 @@ exports.parse = function(md, filename, options) {
     newContent = options.preCompile(newContent) || newContent;
   }
 
-  var html = marked(newContent).trim();
+  var html = marked(newContent, options.marked || {});
 
   if (options.postCompile) {
     html = options.postCompile(html) || html;
@@ -97,7 +97,7 @@ exports.parse = function(md, filename, options) {
     filenameExtension: '.md',
     yaml: frontMatter.trim(),
     markdown: newContent.trim(),
-    content: html,
+    content: html.trim(),
     meta: matter
   };
 
