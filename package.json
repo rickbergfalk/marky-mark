@@ -13,9 +13,10 @@
     "jifasnif"
   ],
   "scripts": {
-    "test": "./node_modules/.bin/mocha test"
+    "test": "./node_modules/.bin/grunt"
   },
   "dependencies": {
+    "config-extend": "0.0.7",
     "file-manifest": "^1.0.0",
     "js-yaml": "2.0.x",
     "marked": "0.2.x"
@@ -26,6 +27,16 @@
   },
   "main": "marky-mark",
   "devDependencies": {
-    "mocha": "^1.21.4"
+    "coffee-script": "^1.8.0",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-mocha-cov": "^0.3.0",
+    "grunt-mocha-test": "^0.12.2",
+    "indeed": "^1.0.6",
+    "jshint-stylish": "^1.0.0",
+    "mocha": "^2.0.1",
+    "mocha-given": "^0.1.3",
+    "mocha-lcov-reporter": "0.0.1"
   }
 }

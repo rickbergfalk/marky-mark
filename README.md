@@ -74,6 +74,45 @@ The parsed result is in the meta property, but the original yaml content is stor
 
 And that's it. It's up to you to do something with all the data marky-mark just read.
 
+## API
+
+### parseDirectorySync
+
+Parse all markdown files in a given directory, returning a list of context objects.
+
+```javascript
+var mm = require('marky-mark');
+var pages = mm.parseDirectorySync('./views/staticPages');
+```
+
+### parseMatchesSync
+
+Like `parseDirectorySync`, parses markdown files in a given directory, but accepts patterns for filtering.
+
+```javascript
+var mm = require('marky-mark');
+var pages = mm.parseMatchesSync('./views', ['posts/**/*.md', 'pages/**/*.md', '!**/README.md']);
+```
+
+### parseFileSync
+
+Parse a single markdown file.
+
+```javascript
+var mm = require('marky-mark');
+var obj = mm.parseFileSync('./views/pages/faq.md');
+```
+
+### parse
+
+Parse a literal markdown string. This is a low-level function used internally by the library, but you might find an independent use for it.
+
+```javascript
+var mm = require('marky-mark');
+var obj = mm.parse('# A title\n\n## A subtitle');
+```
+
+Additionally, there are async versions of all of these except parse, which doesn't do anything blocking: `parseDirectory`, `parseMatches`, and `parseFile`.
 
 ## Recommended Pairings
 
