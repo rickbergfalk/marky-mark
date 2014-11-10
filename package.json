@@ -1,6 +1,6 @@
 {
   "name": "marky-mark",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Rick Bergfalk <rick.bergfalk@gmail.com> (http://rickbergfalk.com/)",
   "description": "Reads a directory of markdown files with meta-data/front-matter and parses it out. Add your favorite templating language to make your own static site generator",
   "contributors": [
