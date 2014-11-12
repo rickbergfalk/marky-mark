@@ -14,8 +14,8 @@ Let's assume you have a folder of markdown files that optionally have front-matt
 --- 
 title: Marky Mark. A retrospective.
 tags:
-	- music
-	- 90s
+  - music
+  - 90s
 whatever: you want
 ---
 
@@ -103,6 +103,15 @@ var mm = require('marky-mark');
 var obj = mm.parseFileSync('./views/pages/faq.md');
 ```
 
+### parseFilesSync
+
+Parse multiple markdown files
+
+```javascript
+var mm = require('marky-mark');
+var obj = mm.parseFilesSync(['./views/pages.faq.md', './views/pages/about-me.md']);
+```
+
 ### parse
 
 Parse a literal markdown string. This is a low-level function used internally by the library, but you might find an independent use for it.
@@ -112,7 +121,89 @@ var mm = require('marky-mark');
 var obj = mm.parse('# A title\n\n## A subtitle');
 ```
 
-Additionally, there are async versions of all of these except parse, which doesn't do anything blocking: `parseDirectory`, `parseMatches`, and `parseFile`.
+### parseDirectory
+
+Parse all markdown files in a given directory, returning a list of context objects.
+
+```javascript
+var mm = require('marky-mark');
+mm.parseDirectorySync('./views/staticPages', function(err, pages) {
+  
+});
+```
+
+### parseMatches
+
+Like `parseDirectorySync`, parses markdown files in a given directory, but accepts patterns for filtering.
+
+```javascript
+var mm = require('marky-mark');
+mm.parseMatchesSync('./views', ['posts/**/*.md', 'pages/**/*.md', '!**/README.md'], function(err, pages) {
+  
+});
+```
+
+### parseFile
+
+Parse a single markdown file.
+
+```javascript
+var mm = require('marky-mark');
+mm.parseFileSync('./views/pages/faq.md', function(err, obj) {
+  
+});
+```
+
+### parseFiles
+
+Parse multiple markdown files
+
+```javascript
+var mm = require('marky-mark');
+mm.parseFilesSync(['./views/pages.faq.md', './views/pages/about-me.md'], function(err, objs) {
+  
+});
+```
+### Options
+
+All the above methods accept optional `options` as the second parameter, where possible options include:
+
+* preCompile: A function to call with de-ymled markdown. Accepts (and returns) a markdown string.
+* postCompile: A function to call with processed html. Accepts (and returns) an html string.
+* context: An object of additional context properties (extends the front-matter, if any).
+* marked: Options to pass directly to the marked module.
+
+A synchronous usage with options:
+
+```javascript
+var mm = require('marky-mark');
+var obj = mm.parseFileSync('./views/pages/faq.md', {
+  marked: {
+    gfm: true, // Default
+    tables: false
+  },
+  preCompile: function(md) {
+    return md.replace('foo', 'bar');
+  }
+});
+```
+
+An asynchronous usage with options:
+
+```javascript
+var mm = require('marky-mark');
+mm.parseFile('./views/pages/faq.md', {
+  context: {
+    // foo will be added to the "meta" object
+    foo: 'bar'
+  },
+  postCompile: function(html) {
+    return html.replace('h1', 'h2');
+  }
+}, function(err, obj) {
+
+});
+```
 
 ## Recommended Pairings
 

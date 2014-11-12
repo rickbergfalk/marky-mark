@@ -22,6 +22,7 @@
     "test": "./node_modules/.bin/grunt"
   },
   "dependencies": {
+    "async": "^0.9.0",
     "config-extend": "0.0.7",
     "file-manifest": "^1.0.0",
     "js-yaml": "2.0.x",

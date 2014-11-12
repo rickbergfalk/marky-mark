@@ -5,6 +5,7 @@ var marked = require('marked');	// markdown processor
 var fm = require('file-manifest');
 var content = require('./lib/content');
 var extend = require('config-extend');
+var async = require('async');
 
 var getAbsolute = function(file) {
   // If the file is not absolute, resolve it from cwd
@@ -56,6 +57,22 @@ exports.parseFileSync = function(file, options) {
 };
 
 /**
+ * parseFilesSync - Parse multiple markdown files
+ *
+ * If any file is relative, it will be resolve to an absolute path using the cwd
+ *
+ * @param {array} files - list of relative or absolute file paths
+ * @param {object} options - parsing options
+ */
+exports.parseFilesSync = function(files, options) {
+  var results = [];
+  files.forEach(function(file) {
+    results.push(exports.parseFileSync(file, options));
+  });
+  return results;
+};
+
+/**
  * parse - The main logic. Converts a string of markdown (optionally with yml front-matter) into an object with html and other properties
  *
  * @param {string} md - A string of markdown
@@ -63,9 +80,10 @@ exports.parseFileSync = function(file, options) {
  * @param {object} options - parsing options
  *
  * Options
- *   preCompile: function to call with de-ymled markdown. Accepts (and returns) markdown content.
- *   postCompile: function to call with processed html. Accepts (and returns) html content.
+ *   preCompile: a function to call with de-ymled markdown. Accepts (and returns) a markdown string.
+ *   postCompile: a function to call with processed html. Accepts (and returns) an html string.
  *   context: an object of additional context properties (extends the front-matter, if any).
+ *   marked: options to pass directly to the marked module.
  */
 exports.parse = function(md, filename, options) {
   if (typeof filename === 'object') {
@@ -84,7 +102,7 @@ exports.parse = function(md, filename, options) {
     newContent = options.preCompile(newContent) || newContent;
   }
 
-  var html = marked(newContent).trim();
+  var html = marked(newContent, options.marked || {});
 
   if (options.postCompile) {
     html = options.postCompile(html) || html;
@@ -97,7 +115,7 @@ exports.parse = function(md, filename, options) {
     filenameExtension: '.md',
     yaml: frontMatter.trim(),
     markdown: newContent.trim(),
-    content: html,
+    content: html.trim(),
     meta: matter
   };
 
@@ -167,6 +185,25 @@ exports.parseFile = function(file, options, cb) {
       cb(null, exports.parse(contents, filename, options));
     }
   });
+};
+
+/**
+ * parseFilesSync - Parse multiple markdown files
+ *
+ * If any file is relative, it will be resolve to an absolute path using the cwd
+ *
+ * @param {array} files - list of relative or absolute file paths
+ * @param {object} options - parsing options
+ * @param {function} cb - callback
+ */
+exports.parseFiles = function(files, options, cb) {
+  if (typeof options === 'function') {
+    cb = options;
+    options = {};
+  }
+  async.map(files, function(file, next) {
+    exports.parseFile(file, options, next);
+  }, cb);
 };
 
 // TODO: there should be options for file encoding
