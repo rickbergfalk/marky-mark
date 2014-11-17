@@ -123,7 +123,7 @@ exports.parse = function(md, filename, options) {
     context.filename = filename;
   }
 
-  extend(context, options.context || {});
+  extend(context.meta, options.context || {});
   return context;
 };
 
