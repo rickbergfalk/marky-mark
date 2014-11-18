@@ -165,7 +165,7 @@ describe 'marky-mark', ->
           date: new Date('2012-01-01T00:00:00.000Z')
           category: "test"
           title: "post 1"
-        foo: 'bar'
+          foo: 'bar'
 
     context 'with options for marked', ->
       Given -> @md = fs.readFileSync __dirname + '/posts/table.md', 'utf8'
