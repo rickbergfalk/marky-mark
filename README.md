@@ -6,6 +6,10 @@ It reads a directory of files with yaml meta-data/front-matter and parses it out
 And if the extension is a markdown one it'll generate the html of that markdown. 
 Add your favorite templating language to make your own static site generator. 
 
+## Currently Unmaintained
+
+If you would like to take ownership of this module or have publishing rights let me know.
+
 ## Usage
 
 Let's assume you have a folder of markdown files that optionally have front-matter/meta-data, looking something like this:
