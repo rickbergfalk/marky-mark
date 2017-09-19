@@ -6,7 +6,7 @@ It reads a directory of files with yaml meta-data/front-matter and parses it out
 And if the extension is a markdown one it'll generate the html of that markdown. 
 Add your favorite templating language to make your own static site generator. 
 
-## Currently Unmaintained
+## Up for adoption
 
 If you would like to take ownership of this module or have publishing rights let me know.
 
@@ -30,7 +30,6 @@ Written in markdown of course.
 ```
 
 You can use marky-mark to easily grab all that data and stick it in an array of javascript objects. 
-All you have to do is:
 
 ```javascript
 var mm = require('marky-mark');
@@ -42,14 +41,8 @@ or
 ```javascript
 var mm = require('marky-mark');
 mm.parseDirectory(__dirname + "/path/to/posts", function(err, posts) {
-
+  console.log(posts);
 });
-```
-
-Relative paths work too:
-
-```javascript
-var posts = mm.parseDirectorySync('../posts');
 ```
 
 The output will be an array of objects, with each object representing 1 file. 
@@ -71,7 +64,7 @@ The parsed result is in the meta property, but the original yaml content is stor
     }
   },
   {
-    ... another file's contents ...
+    // ... another file's contents ...
   }
 ]
 ```
@@ -226,15 +219,9 @@ Then you can generate your site automatically as you write, and see a live previ
 Level up your system and automate your deployment.
 
 
-## Notes
+## Contributing
 
-Right now marky-mark just parses a directory of markdown files, that optionally have front-matter in yaml. 
-It was a challenge for myself, and something I found useful.
-
-There are lots of ideas for future development in the code, which is relatively simple and small. 
-If anyone wants to add any of these features or add a new one, or improve the code I've already written, feel free. 
-
-Pull requests welcome.
+Pull requests welcome!
 
 
 ## Installation
