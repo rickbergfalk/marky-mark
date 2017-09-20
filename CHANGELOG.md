@@ -1,4 +1,7 @@
 ```
+0.2.1:
+  - Fix: yaml front-matter/meta-data no longer trimmed
+
 0.2.0: 
 	- marked module is now included and used to parse markdown for files with a markdown extension.
 	  It is exposed to the end user as markyMark.marked.
